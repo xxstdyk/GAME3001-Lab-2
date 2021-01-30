@@ -31,7 +31,7 @@ class SpaceShip final : public DisplayObject {
 	void setTurnRate(const float);
 
 	float getAccelerationRate() const;
-	void setAccellerationRate(const float);
+	void setAccelerationRate(const float);
 
 
 	private:
