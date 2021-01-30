@@ -6,8 +6,8 @@
 #include "Button.h"
 #include "Label.h"
 #include "SpaceShip.h"
-
 #include "Target.h"
+#include "Obstacle.h"
 
 class PlayScene : public Scene {
 	public:
@@ -30,6 +30,7 @@ class PlayScene : public Scene {
 
 	SpaceShip *m_pSpaceShip;
 	Target *m_pTarget;
+	Obstacle *m_pObstacle;
 
 
 	// UI Items
