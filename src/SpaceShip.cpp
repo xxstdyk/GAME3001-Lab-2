@@ -1,6 +1,7 @@
 #include "SpaceShip.h"
 
 #include "Util.h"
+#include "Game.h"
 
 SpaceShip::SpaceShip() {
 	TextureManager::Instance()->load("../Assets/textures/spaceship.png", "spaceship");
@@ -62,7 +63,15 @@ float SpaceShip::getRotation() const {
 }
 
 void SpaceShip::setRotation(const float _angle) {
+
 	m_rotationAngle = _angle;
+	auto angInRads = (_angle - 90.0f) * Util::Deg2Rad;
+
+	auto x = cos(angInRads);
+	auto y = sin(angInRads);
+
+	// convert ang to normalized vec and store in orientation
+	setOrientation(glm::vec2(x, y));
 }
 
 
@@ -85,13 +94,17 @@ void SpaceShip::setAccellerationRate(const float _accelerationRate) {
 
 void SpaceShip::m_Move() {
 
+	auto deltaTime = TheGame::Instance()->getDeltaTime();
+
 	// Direction with magnitude
 	m_targetDirection = m_destination - getTransform()->position;
 
 	// Normalized direction
 	m_targetDirection = Util::normalize(m_targetDirection);
 
-	getRigidBody()->velocity = m_targetDirection * m_maxSpeed;
+	auto target_rotation = Util::signedAngle(getOrientation(), m_targetDirection);
 
-	getTransform()->position += getRigidBody()->velocity;
+	//getRigidBody()->velocity = m_targetDirection * m_maxSpeed;
+
+	//getTransform()->position += getRigidBody()->velocity;
 }
