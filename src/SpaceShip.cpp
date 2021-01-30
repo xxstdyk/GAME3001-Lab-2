@@ -31,8 +31,8 @@ void SpaceShip::draw() {
 	Util::DrawLine(getTransform()->position, getTransform()->position + m_orientation * 60.0f);
 }
 
-void SpaceShip::update() { 
-	
+void SpaceShip::update() {
+
 	m_Move();
 }
 
@@ -43,9 +43,13 @@ void SpaceShip::setDestination(const glm::vec2 _dest) {
 	m_destination = _dest;
 }
 
-void SpaceShip::setMaxSpeed(const float _speed) { 
+void SpaceShip::setMaxSpeed(const float _speed) {
 
 	m_maxSpeed = _speed;
+}
+
+glm::vec2 SpaceShip::getOrientation() const {
+	return m_orientation;
 }
 
 void SpaceShip::setOrientation(const glm::vec2 _orientation) {
@@ -53,10 +57,31 @@ void SpaceShip::setOrientation(const glm::vec2 _orientation) {
 	m_orientation = _orientation;
 }
 
-void SpaceShip::setRotation(const float _angle) { 
+float SpaceShip::getRotation() const {
+	return m_rotationAngle;
+}
 
+void SpaceShip::setRotation(const float _angle) {
 	m_rotationAngle = _angle;
 }
+
+
+float SpaceShip::getTurnRate() const {
+	return m_turnRate;
+}
+
+void SpaceShip::setTurnRate(const float _turnRate) {
+	m_turnRate = _turnRate;
+}
+
+float SpaceShip::getAccelerationRate() const {
+	return m_accelerationRate;
+}
+
+void SpaceShip::setAccellerationRate(const float _accelerationRate) {
+	m_accelerationRate = _accelerationRate;
+}
+
 
 void SpaceShip::m_Move() {
 

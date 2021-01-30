@@ -20,8 +20,19 @@ class SpaceShip final : public DisplayObject {
 	// Getters and setters
 	void setDestination(const glm::vec2);
 	void setMaxSpeed(const float);
+
+	glm::vec2 getOrientation() const;
 	void setOrientation(const glm::vec2);
+
+	float getRotation() const;
 	void setRotation(const float);
+
+	float getTurnRate() const;
+	void setTurnRate(const float);
+
+	float getAccelerationRate() const;
+	void setAccellerationRate(const float);
+
 
 	private:
 
@@ -32,20 +43,11 @@ class SpaceShip final : public DisplayObject {
 
 	float 
 		m_maxSpeed,
-		m_rotationAngle;
+		m_rotationAngle,
+		m_turnRate,
+		m_accelerationRate;
 
 	void m_Move();
 };
 
 #endif /* defined (__SPACE_SHIP__) */
-
-
-struct Foo {
-
-	int val;
-};
-
-struct Bar {
-
-	Foo fooArr[2];
-};
